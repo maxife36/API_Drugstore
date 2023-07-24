@@ -41,14 +41,39 @@ let user_Name_Validator = (userName)=> {
 
 let user_Password_Validator = (password) =>{
 
-// USER NAME RESTRICTIONS BY REGEXP
+// USER PASSWORD RESTRICTIONS BY REGEXP
+
     let validsChar = /^[\w\/.*+¿?¡!#&]{8,}$/
     let atLeastMayus = /[A-Z]+/
     let atLeastMinus = /[a-z]+/
-    let invalidChar = /[\/.*+¿?¡!#&]+/g
+    let atLeastDigit = /\d+/
+    let specialChar = /[\/.*+¿?¡!#&]+/g
     let invalidSpace = /\s+/
     let eightChar = /.{8,}/
-return validsChar.test(password)
-}
 
-console.log(user_Password_Validator("28.04*92"))
+//USER PASSWORD VALIDATIONS
+
+    let hasValidChar = validsChar.test(password);
+    let hasAtLeastMayus = atLeastMayus.test(password);
+    let hasAtLeastMinus = atLeastMinus.test(password);
+    let hasAtLeastDigit = atLeastDigit.test(password);
+    let hasSpecialChar = specialChar.test(password);
+    let hasSpaces = invalidSpace.test(password);
+    let hasAtLeast8Char = eightChar.test(password)
+
+
+return {
+    hasValidChar,
+    hasAtLeastMayus,
+    hasAtLeastMinus,
+    hasAtLeastDigit,
+    hasSpecialChar,
+    hasSpaces,
+    hasAtLeast8Char,
+}}
+
+
+module.exports = {
+    user_Name_Validator,
+    user_Password_Validator
+}

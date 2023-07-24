@@ -1,4 +1,6 @@
-const {user} = require("../Models/index")
+const { user } = require("../Models/index");
+const V = require("../Utils/validations");
+const Msg = require("../Utils/messages");
 
 /*----------USER-----------
 
@@ -11,7 +13,15 @@ const {user} = require("../Models/index")
 5- Eliminar Usuario
 */
 
-let create_User = async(userName, userPassword)=>{
-    
+let create_User = async (data) => {
+  let isValidUserName = V.user_Name_Validator(data.user).isValidUserName;
+  let isValidUserPassword = V.user_Password_Validator(data.password).hasValidChar;
 
+  if (isValidUserName && isValidUserPassword) {
+    await user.create(data)
+  }
+};
+
+module.exports = {
+    create_User
 }

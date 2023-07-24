@@ -1,5 +1,7 @@
 const { Sequelize } = require("sequelize");
+const  {USER, PASSWORD, HOST, DATABASE} = require("dotenv").config().parsed
 
+//{USER, PASSWORD, HOST, DATABASE}
 const user_Factory = require("./_Users");
 const SUppliers_Factory = require("./_Suppliers");
 const prom_Products_Factory = require("./_Promotios_Products");
@@ -10,10 +12,10 @@ const cart_Factory = require("./_Cart");
 const cart_Products_Factory = require("./_Cart_Products");
 
 //-------Acces Parameters-------
-let user_DB = "postgres";
-let password_DB = "28.04*92";
-let host_DB = "localHost";
-let dataBase_DB = "API_Drugstore";
+let user_DB = USER;
+let password_DB = PASSWORD;
+let host_DB = HOST;
+let dataBase_DB = DATABASE;
 
 //-------sequelize instance creation-------
 
