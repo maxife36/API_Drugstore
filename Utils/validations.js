@@ -13,28 +13,28 @@ let user_Name_Validator = (userName)=> {
 
 // USER NAME VALIDATIONS
 
-    let haveValidChar = validsChar.test(userName)
-    let haveAtLeastMayus = atLeastMayus.test(userName)
-    let haveAtLeastMinus = atLeastMinus.test(userName)
-    let haveInvalidChar = invalidChar.test(userName)
-    let haveSpaces = invalidSpace.test(userName)
-    let haveAtLeast8Char = eightChar.test(userName)
+    let hasValidChar = validsChar.test(userName)
+    let hasAtLeastMayus = atLeastMayus.test(userName)
+    let hasAtLeastMinus = atLeastMinus.test(userName)
+    let hasInvalidChar = invalidChar.test(userName)
+    let hasSpaces = invalidSpace.test(userName)
+    let hasAtLeast8Char = eightChar.test(userName)
     
-    let isValidUserName = haveValidChar && haveAtLeastMayus && haveAtLeastMinus && !haveInvalidChar && !haveSpaces && haveAtLeast8Char
+    let isValidUserName = hasValidChar && hasAtLeastMayus && hasAtLeastMinus && !hasInvalidChar && !hasSpaces && hasAtLeast8Char
 
     return {
         isValidUserName,
-        haveAtLeastMayus,
-        haveAtLeastMinus,
+        hasAtLeastMayus,
+        hasAtLeastMinus,
         invalidChar: {
-            haveInvalidChar,
-            indexInvalidChar: haveInvalidChar? userName.match(invalidChar) : null
+            hasInvalidChar,
+            indexInvalidChar: hasInvalidChar? userName.match(invalidChar) : null
         },
         invalidSpace: {
-            haveSpaces,
-            indexInvalidChar: haveSpaces? invalidSpace.exec(userName).index : null
+            hasSpaces,
+            indexInvalidChar: hasSpaces? invalidSpace.exec(userName).index : null
         },
-        haveAtLeast8Char,
+        hasAtLeast8Char,
     }
 }
 
@@ -42,6 +42,13 @@ let user_Name_Validator = (userName)=> {
 let user_Password_Validator = (password) =>{
 
 // USER NAME RESTRICTIONS BY REGEXP
-    let validsChar = /^\w$/
-
+    let validsChar = /^[\w\/.*+¿?¡!#&]{8,}$/
+    let atLeastMayus = /[A-Z]+/
+    let atLeastMinus = /[a-z]+/
+    let invalidChar = /[\/.*+¿?¡!#&]+/g
+    let invalidSpace = /\s+/
+    let eightChar = /.{8,}/
+return validsChar.test(password)
 }
+
+console.log(user_Password_Validator("28.04*92"))
