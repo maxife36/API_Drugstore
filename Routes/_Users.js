@@ -4,7 +4,10 @@ const fn = require("../API_Controller/_Users")
 
 // ----------GET ENDPOINTS-----------
 
-router.get("/UserValidation", )
+router.get("/UserValidation", fn.userNameValidation )
+router.get("/PasswordValidation", fn.userPasswordValidation )
+router.get("/UserLogin", fn.userLogin )
+router.get("/UserInfo", fn.userInfo ) //PROVISORIO
 
 
 // ----------POST ENDPOINTS-----------
